@@ -2389,8 +2389,10 @@
                    ("2" (lemma "append_null")
                     (("2" (inst -1 "x!1")
                       (("2" (case "x!2 = null")
-                        (("1" (postpone) nil nil)
-                         ("2" (postpone) nil nil))
+                        (("1" (expand "occurrences" 1 2)
+                          (("1" (assert) nil nil)) nil)
+                         ("2" (expand "occurrences" 2 3)
+                          (("2" (assert) nil nil)) nil))
                         nil))
                       nil))
                     nil)
@@ -2398,7 +2400,30 @@
                     (("3" (lift-if)
                       (("3" (prop)
                         (("1" (expand "occurrences" 1 1)
-                          (("1" (assert) (("1" (postpone) nil nil))
+                          (("1" (assert)
+                            (("1" (inst -3 "x!1" "x!2" "d")
+                              (("1"
+                                (assert)
+                                (("1"
+                                  (prop)
+                                  (("1"
+                                    (expand "permutations")
+                                    (("1"
+                                      (inst -1 "x")
+                                      (("1"
+                                        (expand "occurrences" 1 1)
+                                        (("1"
+                                          (rewrite
+                                           "occurrences_of_app")
+                                          (("1" (postpone) nil nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil)
+                                   ("2" (postpone) nil nil))
+                                  nil))
+                                nil))
+                              nil))
                             nil))
                           nil)
                          ("2" (postpone) nil nil))

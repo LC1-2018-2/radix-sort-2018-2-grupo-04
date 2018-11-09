@@ -2385,14 +2385,28 @@
               (("" (lift-if)
                 (("" (prop)
                   (("1" (expand "permutations" -2)
-                    (("1" (assert) (("1" (grind) nil nil)) nil)) nil)
+                    (("1" (inst -2 "x!1" "x!2")
+                      (("1" (inst -2 "d")
+                        (("1" (split)
+                          (("1" (inst -1 "x")
+                            (("1" (rewrite "occurrences_of_app" -1) nil
+                              nil))
+                            nil)
+                           ("2" (rewrite "occurrences_of_app" 2) nil
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil)
                    ("2" (lemma "append_null")
                     (("2" (inst -1 "x!1")
                       (("2" (case "x!2 = null")
                         (("1" (expand "occurrences" 1 2)
                           (("1" (assert) nil nil)) nil)
                          ("2" (expand "occurrences" 2 3)
-                          (("2" (assert) nil nil)) nil))
+                          (("2" (hide-all-but (-2 1))
+                            (("2" (assert) nil nil)) nil))
+                          nil))
                         nil))
                       nil))
                     nil)
@@ -2400,14 +2414,120 @@
                     (("3" (lift-if)
                       (("3" (prop)
                         (("1" (expand "occurrences" 1 1)
-                          (("1" (assert) (("1" (postpone) nil nil))
+                          (("1" (assert)
+                            (("1" (inst -3 "x!1" "x!2" "d")
+                              (("1"
+                                (assert)
+                                (("1"
+                                  (prop)
+                                  (("1"
+                                    (expand "permutations")
+                                    (("1"
+                                      (inst -1 "x")
+                                      (("1"
+                                        (expand "occurrences" 1 1)
+                                        (("1"
+                                          (rewrite
+                                           "occurrences_of_app")
+                                          (("1"
+                                            (lift-if)
+                                            (("1"
+                                              (prop)
+                                              (("1"
+                                                (expand
+                                                 "occurrences"
+                                                 -2
+                                                 1)
+                                                (("1"
+                                                  (assert)
+                                                  (("1"
+                                                    (expand
+                                                     "occurrences"
+                                                     1
+                                                     2)
+                                                    (("1"
+                                                      (lift-if)
+                                                      (("1"
+                                                        (prop)
+                                                        (("1"
+                                                          (postpone)
+                                                          nil
+                                                          nil)
+                                                         ("2"
+                                                          (postpone)
+                                                          nil
+                                                          nil)
+                                                         ("3"
+                                                          (postpone)
+                                                          nil
+                                                          nil))
+                                                        nil))
+                                                      nil))
+                                                    nil))
+                                                  nil))
+                                                nil)
+                                               ("2" (postpone) nil nil)
+                                               ("3"
+                                                (postpone)
+                                                nil
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil))
+                                        nil))
+                                      nil))
+                                    nil)
+                                   ("2" (postpone) nil nil))
+                                  nil))
+                                nil))
+                              nil))
                             nil))
                           nil)
-                         ("2" (postpone) nil nil))
+                         ("2" (inst -2 "x!1" "x!2")
+                          (("2" (inst -2 "d")
+                            (("2" (assert)
+                              (("2"
+                                (split)
+                                (("1"
+                                  (expand "permutations")
+                                  (("1"
+                                    (inst -1 "x")
+                                    (("1"
+                                      (rewrite "occurrences_of_app")
+                                      (("1" (postpone) nil nil))
+                                      nil))
+                                    nil))
+                                  nil)
+                                 ("2"
+                                  (expand "occurrences" 2 3)
+                                  (("2"
+                                    (lift-if)
+                                    (("2"
+                                      (prop)
+                                      (("1" (postpone) nil nil)
+                                       ("2" (postpone) nil nil)
+                                       ("3" (postpone) nil nil))
+                                      nil))
+                                    nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
                         nil))
                       nil))
                     nil)
-                   ("4" (postpone) nil nil))
+                   ("4" (inst -1 "x!1" "x!2")
+                    (("4" (inst -1 "d")
+                      (("4" (assert)
+                        (("4" (split)
+                          (("1" (expand "permutations")
+                            (("1" (postpone) nil nil)) nil)
+                           ("2" (postpone) nil nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
                   nil))
                 nil))
               nil))
@@ -3476,7 +3596,18 @@
    shostak))
  (merge_sort_d_sorts 0
   (merge_sort_d_sorts-1 nil 3747760065
-   ("" (measure-induct+ "length(l)" ("l")) (("" (postpone) nil nil))
+   ("" (measure-induct+ "length(l)" ("l"))
+    (("" (skeep)
+      (("" (expand "is_sorted_ud?" 1)
+        (("" (skeep)
+          (("" (expand "<=")
+            (("" (flatten)
+              (("" (lemma "d_exp_dec") (("" (postpone) nil nil)) nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
     nil)
    ((TRUE const-decl "bool" booleans nil)
     (merge_preserves_sort formula-decl nil radix_sort nil)

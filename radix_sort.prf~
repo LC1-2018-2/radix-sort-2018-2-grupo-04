@@ -2425,54 +2425,10 @@
                                     (("1"
                                       (inst -1 "x")
                                       (("1"
-                                        (expand "occurrences" 1 1)
+                                        (rewrite "occurrences_of_app")
                                         (("1"
-                                          (rewrite
-                                           "occurrences_of_app")
-                                          (("1"
-                                            (lift-if)
-                                            (("1"
-                                              (prop)
-                                              (("1"
-                                                (expand
-                                                 "occurrences"
-                                                 -2
-                                                 1)
-                                                (("1"
-                                                  (assert)
-                                                  (("1"
-                                                    (expand
-                                                     "occurrences"
-                                                     1
-                                                     2)
-                                                    (("1"
-                                                      (lift-if)
-                                                      (("1"
-                                                        (prop)
-                                                        (("1"
-                                                          (postpone)
-                                                          nil
-                                                          nil)
-                                                         ("2"
-                                                          (postpone)
-                                                          nil
-                                                          nil)
-                                                         ("3"
-                                                          (postpone)
-                                                          nil
-                                                          nil))
-                                                        nil))
-                                                      nil))
-                                                    nil))
-                                                  nil))
-                                                nil)
-                                               ("2" (postpone) nil nil)
-                                               ("3"
-                                                (postpone)
-                                                nil
-                                                nil))
-                                              nil))
-                                            nil))
+                                          (hide (2 3))
+                                          (("1" (postpone) nil nil))
                                           nil))
                                         nil))
                                       nil))
@@ -3596,18 +3552,7 @@
    shostak))
  (merge_sort_d_sorts 0
   (merge_sort_d_sorts-1 nil 3747760065
-   ("" (measure-induct+ "length(l)" ("l"))
-    (("" (skeep)
-      (("" (expand "is_sorted_ud?" 1)
-        (("" (skeep)
-          (("" (expand "<=")
-            (("" (flatten)
-              (("" (lemma "d_exp_dec") (("" (postpone) nil nil)) nil))
-              nil))
-            nil))
-          nil))
-        nil))
-      nil))
+   ("" (measure-induct+ "length(l)" ("l")) (("" (postpone) nil nil))
     nil)
    ((TRUE const-decl "bool" booleans nil)
     (merge_preserves_sort formula-decl nil radix_sort nil)
